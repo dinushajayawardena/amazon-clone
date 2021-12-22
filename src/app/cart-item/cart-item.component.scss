@@ -23,6 +23,15 @@
 
   .item-stock{
     color: grey;
+    padding: 2px;
+  }
+
+  .item-out-of-stock{
+    color: white;
+    font-weight: bold;
+    background-color: #ff4949;
+    padding: 2px;
+    border-radius: 5px;
   }
 
   .item-stock-ctrls{
