@@ -1,4 +1,63 @@
-header{
-  height: 50px;
-  background-color: yellow;
+header {
+  height: 60px;
+  background-color: #0F1111;
+  display: flex;
+  justify-content: space-between;
+  text-align: center;
+  padding-top: 7px;
+  padding-left: 10px;
+
+  .logo-container {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    height: 50px;
+    cursor: pointer;
+    border: 1px solid transparent;
+
+    &:hover{
+      border: 1px solid white;
+    }
+
+  }
+
+  .logo {
+    background-image: url('../../assets/amazon-sprite.png');
+    background-position: -10px -51px;
+    width: 97px;
+    height: 30px;
+    cursor: pointer;
+  }
+
+  .cart-container{
+    color: white;
+   text-align: center;
+    margin-top: 15px;
+    margin-right: 45px;
+
+    span{
+      position: absolute;
+      top: 10px;
+      color: darkorange;
+      font-weight: bold;
+    }
+
+    .cart-item{
+      background-image: url('../../assets/amazon-sprite.png');
+      background-position: -10px -340px;
+      width: 38px;
+      height: 26px;
+      cursor: pointer;
+    }
+
+    .container-text{
+      position: absolute;
+      top: 30px;
+      padding-left: 20px;
+      color: white;
+      font-size: 15px;
+    }
+
+  }
+
 }
