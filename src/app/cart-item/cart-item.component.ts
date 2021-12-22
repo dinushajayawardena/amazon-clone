@@ -15,10 +15,15 @@ export class CartItemComponent implements OnInit {
     99,
     10)
 
+  inCart = 0;
+
   constructor() {
   }
 
   ngOnInit(): void {
   }
 
+  updateCart(increment: boolean) {
+    increment? this.inCart++ : this.inCart--;
+  }
 }
