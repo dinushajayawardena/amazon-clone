@@ -25,8 +25,13 @@ export class AppComponent {
     }else {
       this.cartItems.push({code: it.code, qty: inCart});
     }
+  }
 
-    console.log(this.cartItems);
+  getTotalItemsInCart(): number{
+    let totalItems = 0;
+
+    this.cartItems.forEach(item => totalItems += item.qty);
+    return totalItems;
   }
 
 }

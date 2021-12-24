@@ -32,9 +32,11 @@ header {
   .cart-container-wrapper{
     height: 50px;
     border: 1px solid transparent;
+    margin-right: 10px;
 
     &:hover{
       border: 1px solid white;
+      cursor: pointer;
     }
 
   }
