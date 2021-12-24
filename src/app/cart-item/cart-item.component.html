@@ -1,4 +1,4 @@
-<div class="cart-item">
+<div class="cart-item" (click)="navigtateToItem()">
   <img class="item-image" src="{{item.image}}">
   <p class="item-description">{{item.description}}</p>
   <ng-container [ngSwitch]="item.rating">
@@ -12,7 +12,7 @@
   <div *ngIf="item.qty - inCart !== 0" class="item-stock ">In Stock: {{item.qty - inCart}}</div>
   <div *ngIf="item.qty - inCart === 0" class="item-out-of-stock">Out of Stock</div>
   Add to cart:
-  <div class="input-group mb-3 item-stock-ctrls">
+  <div class="input-group mb-3 item-stock-ctrls" (click)="$event.stopImmediatePropagation()">
     <button [disabled]="inCart === 0"  class="btn btn-outline-secondary" type="button" (click)="updateCart(false)">-</button>
     <input type="text" class="form-control" placeholder="" disabled [(ngModel)]="inCart">
     <button [disabled]="inCart === item.qty" class="btn btn-outline-secondary" type="button" (click)="updateCart(true)">+</button>
