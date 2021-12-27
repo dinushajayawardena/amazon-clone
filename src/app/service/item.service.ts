@@ -13,4 +13,14 @@ export class ItemService {
   getAllItems(): Array<Item>{
     return DUMMY_DATA;
   }
+
+  getItem(code: string) : Item | null {
+    const item = DUMMY_DATA.find(item => item.code === code);
+
+    if(item){
+      return  item;
+    }else {
+      return null;
+    }
+  }
 }

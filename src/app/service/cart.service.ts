@@ -7,7 +7,7 @@ import {Subject} from "rxjs";
 })
 export class CartService {
 
-  private cartItems: Array<{code: String, qty:number}> = [];
+  private cartItems: Array<{code: string, qty:number}> = [];
   private totalItems =  new Subject<number>();
 
   constructor() {
@@ -42,5 +42,15 @@ export class CartService {
 
   getTotalItemsInCart(): Subject<number>{
     return this.totalItems;
+  }
+
+  getQtyInCart(code: string): number{
+    const item = this.cartItems.find(i => i.code === code);
+
+    return item? item.qty: 0;
+  }
+
+  getAllCartItems(): Array<{code: string, qty:number}>{
+    return this.cartItems;
   }
 }

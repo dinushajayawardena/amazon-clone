@@ -21,6 +21,11 @@ export class CartItemComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.loadInCartQty();
+  }
+
+  loadInCartQty(){
+    this.inCart = this.cartService.getQtyInCart(this.item.code);
   }
 
   updateCart(increment: boolean) {
@@ -29,6 +34,6 @@ export class CartItemComponent implements OnInit {
   }
 
   navigtateToItem() {
-    this.router.navigateByUrl("/items")
+    this.router.navigate(['/items', this.item.code]);
   }
 }
