@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {CartService} from "../service/cart.service";
 import {ItemService} from "../service/item.service";
 import {Item} from "../dto/item";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-cart',
@@ -10,21 +11,31 @@ import {Item} from "../dto/item";
 })
 export class CartComponent implements OnInit {
 
-  cartItems!: Array<{code: string, qty:number}>;
+  total: number = 0;
+  cartItems!: Array<{code: string, qty: number}>;
 
   constructor(private cartService: CartService,
-              public itemService: ItemService) { }
+              public itemService: ItemService,
+              private router: Router) { }
 
   ngOnInit(): void {
     this.loadAllCartItems();
+    this.calculateNetTotal();
   }
 
   loadAllCartItems(){
-    this.cartItems = this.cartService.getAllCartItems();
+    this.cartItems =  this.cartService.getAllCartItems();
   }
 
-  getItem(code: string): Item{
+  getItem(code: string): Item {
     return this.itemService.getItem(code) as Item;
   }
 
+  navigateToItem(code: string) {
+    this.router.navigate(['/items', code]);
+  }
+
+  calculateNetTotal(): void{
+    this.total = this.cartService.getNetTotal();
+  }
 }

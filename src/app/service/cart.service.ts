@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import {Item} from "../dto/item";
 import {Subject} from "rxjs";
+import {ItemService} from "./item.service";
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +11,7 @@ export class CartService {
   private cartItems: Array<{code: string, qty:number}> = [];
   private totalItems =  new Subject<number>();
 
-  constructor() {
+  constructor(private itemService: ItemService) {
 
   }
 
@@ -52,5 +53,20 @@ export class CartService {
 
   getAllCartItems(): Array<{code: string, qty:number}>{
     return this.cartItems;
+  }
+
+  removeItemFromCart(code: string): void{
+    this.cartItems = this.cartItems.filter(item => item.code != code);
+    this.calculateTotalItems();
+  }
+
+  getNetTotal(): number{
+    let total = 0;
+
+    this.cartItems.forEach(item => {
+      total += this.itemService.getItem(item.code)!.price * item.qty;
+    })
+
+    return total;
   }
 }
